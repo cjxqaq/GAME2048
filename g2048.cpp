@@ -167,18 +167,21 @@ void G2048::coreAlgorithm(Pane& p)//最核心的算法，左移函数，其他�
 	{
 		for (int j = 0; j < SIZE - 1; j++)
 		{
-			if (p[i][j] == 0)
+			int times = 0;
+			while(p[i][j] == 0)
 			{
 				int k = j;
 				for (; k < SIZE - 1; k++)
 				{
 					p[i][k] = p[i][k + 1];
-				}
+				}//右侧所有元素移动一格
 				p[i][k] = 0;
+				times++;
+				if (times == 2)break;
 			}
 		}
 	}
-	for (int i = 0; i < SIZE; i++)//对于每一行,将所有能加和的元素合并（纯合并）
+	for (int i = 0; i < SIZE; i++)//对于每一行,将所有相邻能加和的元素合并（纯合并）
 	{
 		for (int j = 0; j <SIZE-1; j++)
 		{
@@ -193,14 +196,17 @@ void G2048::coreAlgorithm(Pane& p)//最核心的算法，左移函数，其他�
 	{
 		for (int j = 0; j < SIZE - 1; j++)
 		{
-			if (p[i][j] == 0)
+			int times = 0;
+			while (p[i][j] == 0)
 			{
 				int k = j;
 				for (; k < SIZE - 1; k++)
 				{
 					p[i][k] = p[i][k + 1];
-				}
+				}//右侧所有元素移动一格
 				p[i][k] = 0;
+				times++;
+				if (times == 2)break;
 			}
 		}
 	}
